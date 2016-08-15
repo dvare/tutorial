@@ -1,4 +1,4 @@
-package com.dvare.rules;
+package com.dvare.test;
 
 
 import org.junit.runner.RunWith;

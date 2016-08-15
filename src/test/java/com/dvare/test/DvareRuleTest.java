@@ -1,4 +1,4 @@
-package com.dvare.rules;
+package com.dvare.test;
 
 import com.dvare.binding.data.DataRow;
 import com.dvare.binding.model.TypeBinding;
@@ -58,8 +58,6 @@ public class DvareRuleTest extends TestCase {
         assertFalse(result);
 
     }
-
-
 }
 
 

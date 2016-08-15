@@ -6,7 +6,7 @@ import com.dvare.rules.annotations.*;
 public class BasicRule {
 
     private Integer age;
-    @Condition
+    @Condition(type = ConditionType.CODE)
     public boolean condition() {
 
         return age > 20 && age < 30;

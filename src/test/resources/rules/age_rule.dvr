@@ -1,1 +1,1 @@
-age > 30 And age < 40
+age between [ 19 , 25 ] And group = 'adult' And title = 'Mr' And gender = 'Male'

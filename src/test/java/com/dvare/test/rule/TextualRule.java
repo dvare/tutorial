@@ -1,4 +1,4 @@
-package com.dvare.rule;
+package com.dvare.test.rule;
 
 
 import com.dvare.annotations.*;
@@ -15,26 +15,16 @@ public class TextualRule {
     private File fileRule;
     private Person person;
 
-    @Condition(type = ConditionType.TEXT)
+    @Condition(type = ConditionType.TEXT, order = 0)
     public boolean condition(TextualRuleEngine textualRuleEngine) {
         logger.info("Inside Condition 1");
-        try {
-            return textualRuleEngine.evaluate(rule, Person.class, person);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+        return textualRuleEngine.evaluate(rule, Person.class, person);
     }
 
-    @Condition(type = ConditionType.TEXT)
+    @Condition(type = ConditionType.TEXT, order = 1)
     public boolean condition2(TextualRuleEngine textualRuleEngine) {
         logger.info("Inside Condition 2");
-        try {
-            return textualRuleEngine.evaluate(fileRule, Person.class, person);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+        return textualRuleEngine.evaluate(fileRule, Person.class, person);
     }
 
     @Before

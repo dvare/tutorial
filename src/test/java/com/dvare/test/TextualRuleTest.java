@@ -1,10 +1,10 @@
 package com.dvare.test;
 
-import com.dvare.config.RuleConfiguration;
+import com.dvare.api.RuleEngineBuilder;
 import com.dvare.exceptions.rule.IllegalRuleException;
-import com.dvare.rule.TextualRule;
+import com.dvare.test.rule.TextualRule;
 import com.dvare.ruleengine.RuleEngine;
-import com.dvare.ruleengine.TextualRuleEngine;
+import com.dvare.util.PARAM;
 import com.dvare.util.Person;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -16,9 +16,9 @@ public class TextualRuleTest extends TestCase {
     @Test
     public void testApp() throws IllegalRuleException {
 
-        RuleConfiguration configuration = new RuleConfiguration();
-        TextualRuleEngine textualRuleEngine = new TextualRuleEngine(configuration);
-        RuleEngine ruleEngine = new RuleEngine(textualRuleEngine);
+        RuleEngineBuilder ruleEngineBuilder = new RuleEngineBuilder();
+        ruleEngineBuilder.satisfyCondition(PARAM.ANY).stopOnFail(false);
+        RuleEngine ruleEngine = ruleEngineBuilder.build();
 
         Person male = new Person();
         male.setAge(23);

@@ -1,12 +1,14 @@
 package com.dvare.test;
 
 
-import com.dvare.binding.rule.Rule;
-import com.dvare.config.RuleConfiguration;
+import com.dvare.annotations.Rule;
+import com.dvare.binding.rule.RuleBinding;
+
 import com.dvare.evaluator.RuleEvaluator;
 import com.dvare.exceptions.interpreter.InterpretException;
 import com.dvare.exceptions.parser.ExpressionParseException;
 import com.dvare.expression.Expression;
+import com.dvare.spring.config.RuleConfiguration;
 import com.dvare.util.EqualOperation;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -33,7 +35,7 @@ public class DvareRuleTest extends TestCase {
                 " And Variable7 in [R'B1.*',R'A1.*'] ";
 
         Expression expression = factory.getParser().fromString(exp, EqualOperation.class);
-        Rule rule = new com.dvare.binding.rule.Rule(expression);
+        RuleBinding rule = new RuleBinding(expression);
 
         EqualOperation equalOperation = new EqualOperation();
         equalOperation.setVariable0(10);

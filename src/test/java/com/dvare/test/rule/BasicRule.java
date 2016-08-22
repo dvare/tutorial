@@ -1,4 +1,4 @@
-package com.dvare.rule;
+package com.dvare.test.rule;
 
 
 import com.dvare.annotations.*;

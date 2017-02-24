@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.dvare</groupId>
+    <groupId>org.dvare</groupId>
     <artifactId>tutorial</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>RULES</name>
@@ -43,10 +43,6 @@
             <url>http://repo1.maven.org/maven/</url>
         </repository>
         <repository>
-            <id>davre</id>
-            <url>https://raw.githubusercontent.com/dvare/release/tutorial/</url>
-        </repository>
-        <repository>
             <id>oss-sonatype</id>
             <name>oss-sonatype</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
@@ -57,17 +53,11 @@
     </repositories>
 
     <scm>
-        <connection>scm:git:git://github.com/dvare/release.git</connection>
-        <developerConnection>scm:git:git://github.com/dvare/release.git</developerConnection>
-        <url>https://github.com/dvare/release.git</url>
+        <connection>scm:git:git://github.com/dvare/tutorial.git</connection>
+        <developerConnection>scm:git:git://github.com/dvare/tutorial.git</developerConnection>
+        <url>https://github.com/dvare/tutorial.git</url>
     </scm>
-    <distributionManagement>
-        <repository>
-            <id>internal.repo</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/release</url>
-        </repository>
-    </distributionManagement>
+
 
     <licenses>
         <license>
@@ -79,17 +69,16 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.dvare</groupId>
-            <artifactId>rules-core</artifactId>
-            <version>1.0</version>
+            <groupId>org.dvare</groupId>
+            <artifactId>dvare-rules</artifactId>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>com.dvare</groupId>
-            <artifactId>rules-spring</artifactId>
-            <version>1.0</version>
+            <groupId>org.dvare</groupId>
+            <artifactId>dvare-framework</artifactId>
+            <version>2.0-SNAPSHOT</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -151,108 +140,8 @@
                     <reportFormat>html</reportFormat>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven-deploy-plugin.version}</version>
 
-                <goals>
-                    <goal>deploy</goal>
-                </goals>
-                <configuration>
-                    <altDeploymentRepository>
-                        internal.repo::default::file://${project.build.directory}/release
-                    </altDeploymentRepository>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.eclipse.mylyn.github</groupId>
-                        <artifactId>org.eclipse.egit.github.core</artifactId>
-                        <version>2.1.5</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.github.github</groupId>
-                        <artifactId>site-maven-plugin</artifactId>
-                        <version>0.12</version>
-                        <exclusions>
-                            <exclusion>
-                                <groupId>org.eclipse.mylyn.github</groupId>
-                                <artifactId>org.eclipse.egit.github.core</artifactId>
-                            </exclusion>
-                        </exclusions>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <message>Maven artifacts for ${project.version}</message>
-                    <noJekyll>true</noJekyll>
-                    <outputDirectory>${project.build.directory}/release</outputDirectory>
-                    <branch>refs/heads/master</branch>
-                    <includes>
-                        <include>**/*</include>
-                    </includes>
-                    <server>github</server>
-                    <repositoryName>release</repositoryName>
-                    <repositoryOwner>dvare</repositoryOwner>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${maven-jar-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin.version}</version>
-                </plugin>
-
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>attach-javadocs</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>3.0.1</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
 </project>

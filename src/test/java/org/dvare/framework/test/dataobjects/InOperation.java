@@ -1,10 +1,9 @@
-package com.dvare.util;
+package org.dvare.framework.test.dataobjects;
 
 
 import java.util.Date;
 
-public class EqualOperation {
-    public Integer Variable0;
+public class InOperation {
     public String Variable1;
     public Integer Variable2;
     public Float Variable3;
@@ -12,15 +11,6 @@ public class EqualOperation {
     public Date Variable5;
     public Date Variable6;
     public String Variable7;
-
-
-    public Integer getVariable0() {
-        return Variable0;
-    }
-
-    public void setVariable0(Integer variable0) {
-        Variable0 = variable0;
-    }
 
     public String getVariable1() {
         return Variable1;
